@@ -1,2 +1,7 @@
-/home/gustavo/NetBeansProjects/SaamSystem/src/main/java/com/mycompany/saamsystem/view/Login.java
+/home/gustavo/NetBeansProjects/SaamSystem/src/main/java/controller/UsuarioController.java
 /home/gustavo/NetBeansProjects/SaamSystem/src/main/java/dao/ConexaoBanco.java
+/home/gustavo/NetBeansProjects/SaamSystem/src/main/java/dao/UsuarioDAO.java
+/home/gustavo/NetBeansProjects/SaamSystem/src/main/java/model/dto/UsuarioDTO.java
+/home/gustavo/NetBeansProjects/SaamSystem/src/main/java/model/service/UsuarioService.java
+/home/gustavo/NetBeansProjects/SaamSystem/src/main/java/model/util/Criptografar.java
+/home/gustavo/NetBeansProjects/SaamSystem/src/main/java/view/Login.java

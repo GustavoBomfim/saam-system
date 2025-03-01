@@ -2,9 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.mycompany.saamsystem.view;
+package view;
 
-import dao.ConexaoBanco;
+import controller.UsuarioController;
+import model.dto.UsuarioDTO;
 
 /**
  *
@@ -197,6 +198,8 @@ public class Login extends javax.swing.JFrame {
 
     private void entrarBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_entrarBtnMouseClicked
         // TODO add your handling code here:
+     UsuarioController controller = new UsuarioController();
+     controller.cadastrarUsuario(new UsuarioDTO("Gustavo", "gu@email.com", "senha"));
      
     }//GEN-LAST:event_entrarBtnMouseClicked
 
