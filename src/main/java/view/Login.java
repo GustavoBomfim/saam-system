@@ -5,6 +5,7 @@
 package view;
 
 import controller.UsuarioController;
+import java.util.Arrays;
 import model.dto.UsuarioDTO;
 
 /**
@@ -36,15 +37,15 @@ public class Login extends javax.swing.JFrame {
         emailText = new javax.swing.JLabel();
         senhaText = new javax.swing.JLabel();
         entrarBtn = new javax.swing.JButton();
-        senhaInput2 = new javax.swing.JPasswordField();
+        senhaInput = new javax.swing.JPasswordField();
         jPanel2 = new javax.swing.JPanel();
         novoPorAqui = new javax.swing.JLabel();
-        email2Input = new javax.swing.JTextField();
+        emailCadastroInput = new javax.swing.JTextField();
         emailText2 = new javax.swing.JLabel();
         senhaText2 = new javax.swing.JLabel();
         nomeText = new javax.swing.JLabel();
-        nomeInput = new javax.swing.JTextField();
-        senhaInput = new javax.swing.JPasswordField();
+        nomeCadastroInput = new javax.swing.JTextField();
+        senhaCadastroInput = new javax.swing.JPasswordField();
         cadastreBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -84,7 +85,7 @@ public class Login extends javax.swing.JFrame {
                         .addComponent(senhaText)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(senhaInput2, javax.swing.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE)
+                                .addComponent(senhaInput, javax.swing.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE)
                                 .addComponent(emailInput))
                             .addContainerGap(379, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -108,7 +109,7 @@ public class Login extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(senhaText)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(senhaInput2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(senhaInput, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(entrarBtn)
                 .addContainerGap(405, Short.MAX_VALUE))
@@ -129,6 +130,11 @@ public class Login extends javax.swing.JFrame {
         nomeText.setText("Nome");
 
         cadastreBtn.setText("Cadastre-se");
+        cadastreBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cadastreBtnMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -144,10 +150,10 @@ public class Login extends javax.swing.JFrame {
                         .addGap(151, 151, 151)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(senhaText2)
-                            .addComponent(senhaInput, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(email2Input, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(senhaCadastroInput, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(emailCadastroInput, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(emailText2)
-                            .addComponent(nomeInput, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nomeCadastroInput, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(nomeText)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(261, 261, 261)
@@ -162,15 +168,15 @@ public class Login extends javax.swing.JFrame {
                 .addGap(49, 49, 49)
                 .addComponent(nomeText)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(nomeInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(nomeCadastroInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(emailText2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(email2Input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(emailCadastroInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(senhaText2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(senhaInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(senhaCadastroInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addComponent(cadastreBtn)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -198,10 +204,15 @@ public class Login extends javax.swing.JFrame {
 
     private void entrarBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_entrarBtnMouseClicked
         // TODO add your handling code here:
-     UsuarioController controller = new UsuarioController();
-     controller.cadastrarUsuario(new UsuarioDTO("Gustavo", "gu@email.com", "senha"));
      
     }//GEN-LAST:event_entrarBtnMouseClicked
+
+    private void cadastreBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cadastreBtnMouseClicked
+        // TODO add your handling code here:
+        UsuarioController controller = new UsuarioController();
+        controller.cadastrarUsuario(new UsuarioDTO(nomeCadastroInput.getText(), 
+             emailCadastroInput.getText(), Arrays.toString(senhaCadastroInput.getPassword())));
+    }//GEN-LAST:event_cadastreBtnMouseClicked
 
     /**
      * @param args the command line arguments
@@ -241,7 +252,7 @@ public class Login extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bemVindo;
     private javax.swing.JButton cadastreBtn;
-    private javax.swing.JTextField email2Input;
+    private javax.swing.JTextField emailCadastroInput;
     private javax.swing.JTextField emailInput;
     private javax.swing.JLabel emailText;
     private javax.swing.JLabel emailText2;
@@ -249,11 +260,11 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel logoSaam;
-    private javax.swing.JTextField nomeInput;
+    private javax.swing.JTextField nomeCadastroInput;
     private javax.swing.JLabel nomeText;
     private javax.swing.JLabel novoPorAqui;
+    private javax.swing.JPasswordField senhaCadastroInput;
     private javax.swing.JPasswordField senhaInput;
-    private javax.swing.JPasswordField senhaInput2;
     private javax.swing.JLabel senhaText;
     private javax.swing.JLabel senhaText2;
     // End of variables declaration//GEN-END:variables

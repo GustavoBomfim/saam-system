@@ -63,7 +63,7 @@
                           <Component id="senhaText" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="senhaInput2" pref="318" max="32767" attributes="0"/>
+                                  <Component id="senhaInput" pref="318" max="32767" attributes="0"/>
                                   <Component id="emailInput" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace pref="379" max="32767" attributes="0"/>
@@ -96,7 +96,7 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="senhaText" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="senhaInput2" min="-2" pref="24" max="-2" attributes="0"/>
+                  <Component id="senhaInput" min="-2" pref="24" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="entrarBtn" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="405" max="32767" attributes="0"/>
@@ -146,7 +146,7 @@
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="entrarBtnMouseClicked"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JPasswordField" name="senhaInput2">
+        <Component class="javax.swing.JPasswordField" name="senhaInput">
         </Component>
       </SubComponents>
     </Container>
@@ -171,10 +171,10 @@
                           <EmptySpace min="-2" pref="151" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="senhaText2" min="-2" max="-2" attributes="0"/>
-                              <Component id="senhaInput" alignment="0" min="-2" pref="318" max="-2" attributes="0"/>
-                              <Component id="email2Input" alignment="0" min="-2" pref="318" max="-2" attributes="0"/>
+                              <Component id="senhaCadastroInput" alignment="0" min="-2" pref="318" max="-2" attributes="0"/>
+                              <Component id="emailCadastroInput" alignment="0" min="-2" pref="318" max="-2" attributes="0"/>
                               <Component id="emailText2" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="nomeInput" alignment="0" min="-2" pref="318" max="-2" attributes="0"/>
+                              <Component id="nomeCadastroInput" alignment="0" min="-2" pref="318" max="-2" attributes="0"/>
                               <Component id="nomeText" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -195,15 +195,15 @@
                   <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                   <Component id="nomeText" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="nomeInput" min="-2" max="-2" attributes="0"/>
+                  <Component id="nomeCadastroInput" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="emailText2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="email2Input" min="-2" max="-2" attributes="0"/>
+                  <Component id="emailCadastroInput" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="senhaText2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="senhaInput" min="-2" max="-2" attributes="0"/>
+                  <Component id="senhaCadastroInput" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                   <Component id="cadastreBtn" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
@@ -220,7 +220,7 @@
             <Property name="text" type="java.lang.String" value="Novo por aqui?"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="email2Input">
+        <Component class="javax.swing.JTextField" name="emailCadastroInput">
         </Component>
         <Component class="javax.swing.JLabel" name="emailText2">
           <Properties>
@@ -246,14 +246,17 @@
             <Property name="text" type="java.lang.String" value="Nome"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="nomeInput">
+        <Component class="javax.swing.JTextField" name="nomeCadastroInput">
         </Component>
-        <Component class="javax.swing.JPasswordField" name="senhaInput">
+        <Component class="javax.swing.JPasswordField" name="senhaCadastroInput">
         </Component>
         <Component class="javax.swing.JButton" name="cadastreBtn">
           <Properties>
             <Property name="text" type="java.lang.String" value="Cadastre-se"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cadastreBtnMouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
