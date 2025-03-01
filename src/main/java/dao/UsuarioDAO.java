@@ -31,7 +31,13 @@ public class UsuarioDAO {
             
             JOptionPane.showMessageDialog(null, "Salvo");
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro " + e);
+            if (e.getMessage().contains("unique_email")) {
+                String mensagem = "O e-mail " + dto.getEmail() +" já foi cadastrado.";
+                JOptionPane.showMessageDialog(null, mensagem);
+                //throw new RuntimeException("E-mail já cadastrado.");
+            } else {
+                JOptionPane.showMessageDialog(null, "Erro " + e);
+            }
 
         }
     }

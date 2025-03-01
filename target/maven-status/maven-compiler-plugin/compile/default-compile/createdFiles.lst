@@ -1,10 +1,11 @@
 model/util/Criptografar.class
-view/Login$1.class
+model/util/ValidadorEmail.class
 dao/ConexaoBanco.class
-model/dto/UsuarioDTO.class
 view/Login$3.class
+dao/UsuarioDAO.class
+view/Login$1.class
+model/dto/UsuarioDTO.class
 model/service/UsuarioService.class
 view/Login$2.class
 controller/UsuarioController.class
 view/Login.class
-dao/UsuarioDAO.class

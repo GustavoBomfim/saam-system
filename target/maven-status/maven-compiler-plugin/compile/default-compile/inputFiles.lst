@@ -4,4 +4,5 @@
 /home/gustavo/NetBeansProjects/SaamSystem/src/main/java/model/dto/UsuarioDTO.java
 /home/gustavo/NetBeansProjects/SaamSystem/src/main/java/model/service/UsuarioService.java
 /home/gustavo/NetBeansProjects/SaamSystem/src/main/java/model/util/Criptografar.java
+/home/gustavo/NetBeansProjects/SaamSystem/src/main/java/model/util/ValidadorEmail.java
 /home/gustavo/NetBeansProjects/SaamSystem/src/main/java/view/Login.java
