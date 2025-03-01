@@ -10,4 +10,16 @@
         <maven.compiler.release>17</maven.compiler.release>
         <exec.mainClass>com.mycompany.saamsystem.SaamSystem</exec.mainClass>
     </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.6.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.cloud</groupId>
+            <artifactId>google-cloud-spanner-pgadapter</artifactId>
+            <version>0.45.0</version>
+        </dependency>
+    </dependencies>
 </project>

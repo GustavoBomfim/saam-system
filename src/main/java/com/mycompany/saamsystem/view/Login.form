@@ -142,6 +142,9 @@
           <Properties>
             <Property name="label" type="java.lang.String" value="Entrar"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="entrarBtnMouseClicked"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JPasswordField" name="senhaInput2">
         </Component>

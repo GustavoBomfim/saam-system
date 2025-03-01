@@ -1,2 +1,4 @@
 com/mycompany/saamsystem/view/Login.class
+com/mycompany/saamsystem/view/Login$2.class
+dao/ConexaoBanco.class
 com/mycompany/saamsystem/view/Login$1.class

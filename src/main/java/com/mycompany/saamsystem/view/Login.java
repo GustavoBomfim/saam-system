@@ -4,6 +4,8 @@
  */
 package com.mycompany.saamsystem.view;
 
+import dao.ConexaoBanco;
+
 /**
  *
  * @author gustavo
@@ -60,6 +62,11 @@ public class Login extends javax.swing.JFrame {
         senhaText.setText("Senha");
 
         entrarBtn.setLabel("Entrar");
+        entrarBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                entrarBtnMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -187,6 +194,11 @@ public class Login extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void entrarBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_entrarBtnMouseClicked
+        // TODO add your handling code here:
+     
+    }//GEN-LAST:event_entrarBtnMouseClicked
 
     /**
      * @param args the command line arguments
