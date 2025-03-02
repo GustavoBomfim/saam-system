@@ -47,22 +47,31 @@ public class Login extends javax.swing.JFrame {
         nomeCadastroInput = new javax.swing.JTextField();
         senhaCadastroInput = new javax.swing.JPasswordField();
         cadastreBtn = new javax.swing.JButton();
+        jDesktop = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Saam System");
+        setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(51, 102, 255));
+        jPanel1.setBackground(new java.awt.Color(30, 80, 162));
 
-        bemVindo.setFont(new java.awt.Font("Liberation Sans", 1, 36)); // NOI18N
+        bemVindo.setFont(new java.awt.Font("SansSerif", 1, 32)); // NOI18N
+        bemVindo.setForeground(new java.awt.Color(20, 20, 20));
         bemVindo.setText("Bem vindo");
 
         logoSaam.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/saamLogo.png"))); // NOI18N
 
-        emailText.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        emailText.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        emailText.setForeground(new java.awt.Color(40, 40, 40));
         emailText.setText("Email");
 
-        senhaText.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        senhaText.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        senhaText.setForeground(new java.awt.Color(40, 40, 40));
         senhaText.setText("Senha");
 
+        entrarBtn.setBackground(new java.awt.Color(30, 80, 162));
+        entrarBtn.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        entrarBtn.setForeground(new java.awt.Color(255, 255, 255));
         entrarBtn.setLabel("Entrar");
         entrarBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -75,26 +84,28 @@ public class Login extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(logoSaam, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(165, 165, 165)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(emailText)
-                        .addComponent(senhaText)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(senhaInput, javax.swing.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE)
-                                .addComponent(emailInput))
-                            .addContainerGap(379, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(bemVindo)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(senhaText)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(75, 75, 75)
-                                .addComponent(entrarBtn)))
-                        .addContainerGap(541, Short.MAX_VALUE))))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(entrarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(senhaInput, javax.swing.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE)
+                                        .addComponent(emailInput)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 379, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(emailText)
+                        .addGap(281, 678, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(bemVindo)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(logoSaam, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -115,20 +126,27 @@ public class Login extends javax.swing.JFrame {
                 .addContainerGap(405, Short.MAX_VALUE))
         );
 
-        jPanel2.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel2.setBackground(new java.awt.Color(240, 233, 220));
 
-        novoPorAqui.setFont(new java.awt.Font("Liberation Sans", 1, 36)); // NOI18N
+        novoPorAqui.setFont(new java.awt.Font("SansSerif", 1, 32)); // NOI18N
+        novoPorAqui.setForeground(new java.awt.Color(20, 20, 20));
         novoPorAqui.setText("Novo por aqui?");
 
-        emailText2.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        emailText2.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        emailText2.setForeground(new java.awt.Color(40, 40, 40));
         emailText2.setText("Email");
 
-        senhaText2.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        senhaText2.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        senhaText2.setForeground(new java.awt.Color(40, 40, 40));
         senhaText2.setText("Senha");
 
-        nomeText.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        nomeText.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        nomeText.setForeground(new java.awt.Color(40, 40, 40));
         nomeText.setText("Nome");
 
+        cadastreBtn.setBackground(new java.awt.Color(30, 80, 162));
+        cadastreBtn.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        cadastreBtn.setForeground(new java.awt.Color(255, 255, 255));
         cadastreBtn.setText("Cadastre-se");
         cadastreBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -145,19 +163,16 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(novoPorAqui)
                 .addGap(206, 206, 206))
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(151, 151, 151)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(senhaText2)
-                            .addComponent(senhaCadastroInput, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(emailCadastroInput, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(emailText2)
-                            .addComponent(nomeCadastroInput, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(nomeText)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(261, 261, 261)
-                        .addComponent(cadastreBtn)))
+                .addGap(151, 151, 151)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(cadastreBtn)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(senhaText2)
+                        .addComponent(senhaCadastroInput, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(emailCadastroInput, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(emailText2)
+                        .addComponent(nomeCadastroInput, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(nomeText)))
                 .addContainerGap(197, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -177,9 +192,20 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(senhaText2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(senhaCadastroInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addGap(18, 18, 18)
                 .addComponent(cadastreBtn)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jDesktopLayout = new javax.swing.GroupLayout(jDesktop);
+        jDesktop.setLayout(jDesktopLayout);
+        jDesktopLayout.setHorizontalGroup(
+            jDesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1553, Short.MAX_VALUE)
+        );
+        jDesktopLayout.setVerticalGroup(
+            jDesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 789, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -190,20 +216,37 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addComponent(jDesktop)
+                    .addContainerGap()))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jDesktop)
+                    .addContainerGap()))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void entrarBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_entrarBtnMouseClicked
         // TODO add your handling code here:
+        Funcionarios tela = new Funcionarios();
+        jDesktop.add(tela);
+        tela.setVisible(true);
+        
+        jPanel1.setVisible(false);
+        jPanel2.setVisible(false);
+ 
+        //this.dispose();
+        //tela.setVisible(true);
      
     }//GEN-LAST:event_entrarBtnMouseClicked
 
@@ -257,6 +300,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel emailText;
     private javax.swing.JLabel emailText2;
     private javax.swing.JButton entrarBtn;
+    private javax.swing.JDesktopPane jDesktop;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel logoSaam;

@@ -13,7 +13,7 @@ import model.service.UsuarioService;
  */
 public class UsuarioController {
     
-    UsuarioService service = new UsuarioService();
+    private final UsuarioService service = new UsuarioService();
     
     public void cadastrarUsuario(UsuarioDTO dto){
         service.cadastrarUsuario(dto);
