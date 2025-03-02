@@ -5,6 +5,9 @@
 package dao;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 import model.dto.FuncionarioDTO;
 
@@ -38,6 +41,36 @@ public class FuncionarioDAO {
         } catch (Exception e) {          
             JOptionPane.showMessageDialog(null, "Erro " + e);           
         }
+    }
+    
+    
+     public List<FuncionarioDTO> buscarFuncionarios(){
+        String sql = "SELECT * FROM funcionarios";
+        
+        List<FuncionarioDTO> funcionarios = new ArrayList<>();
+        
+        try {
+            stm = ConexaoBanco.abreConexao().prepareStatement(sql);
+            
+            stm.execute();
+            
+            ResultSet resultado = stm.executeQuery();
+            
+            while(resultado.next()){
+                FuncionarioDTO funcionario = new FuncionarioDTO(
+                        resultado.getString("nome"),
+                        resultado.getDate("data_de_admissao"),
+                        resultado.getDouble("salario"),
+                        resultado.getBoolean("status")
+                );
+                funcionarios.add(funcionario);
+            }
+            stm.close();
+            
+        } catch (Exception e) {          
+            JOptionPane.showMessageDialog(null, "Erro " + e);           
+        }
+        return funcionarios;
     }
     
 }

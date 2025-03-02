@@ -41,4 +41,14 @@ public class FuncionarioDTO {
     public boolean getStatus(){
         return this.status;
     }
+    
+    @Override
+    public String toString() {
+        return "FuncionarioDTO{" +
+               "nome='" + nome + '\'' +
+               ", dataDeAdmissao=" + dataDeAdmissao +
+               ", salario=" + salario +
+               ", status=" + (status ? "Ativo" : "Inativo") +
+               '}';
+    }
 }

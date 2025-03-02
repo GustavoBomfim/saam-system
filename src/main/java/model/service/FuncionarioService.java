@@ -5,6 +5,7 @@
 package model.service;
 
 import dao.FuncionarioDAO;
+import java.util.List;
 import model.dto.FuncionarioDTO;
 
 /**
@@ -16,5 +17,9 @@ public class FuncionarioService {
     
     public void cadastrarFuncionario(FuncionarioDTO dto){
         dao.cadastrarFuncionario(dto);
+    }
+    
+    public List<FuncionarioDTO> buscarFuncionarios(){
+        return dao.buscarFuncionarios();
     }
 }

@@ -5,6 +5,7 @@ view/Funcionarios$1.class
 view/Login$3.class
 model/dto/FuncionarioDTO.class
 dao/UsuarioDAO.class
+view/Funcionarios$3.class
 view/Funcionarios.class
 dao/FuncionarioDAO.class
 controller/FuncionarioController.class
@@ -15,3 +16,4 @@ view/Login$2.class
 controller/UsuarioController.class
 model/service/FuncionarioService.class
 view/Login.class
+view/Funcionarios$2.class

@@ -4,6 +4,7 @@
  */
 package controller;
 
+import java.util.List;
 import model.dto.FuncionarioDTO;
 import model.service.FuncionarioService;
 
@@ -17,6 +18,14 @@ public class FuncionarioController {
     
     public void cadastrarFuncionario(FuncionarioDTO dto){
         service.cadastrarFuncionario(dto);
+    }
+    
+    public List<FuncionarioDTO> buscarFuncionarios(){
+        List<FuncionarioDTO> funcionarios = service.buscarFuncionarios();
+        for(FuncionarioDTO funcionario : funcionarios){
+            System.out.println(funcionario);
+        }
+        return service.buscarFuncionarios();
     }
     
 }
