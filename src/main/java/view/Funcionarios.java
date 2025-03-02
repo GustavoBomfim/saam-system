@@ -8,7 +8,9 @@ import controller.FuncionarioController;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import model.dto.FuncionarioDTO;
 
 
@@ -153,18 +155,10 @@ public class Funcionarios extends javax.swing.JInternalFrame {
             new String [] {
                 "Nome", "Data Admissão", "Salário", "Status"
             }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Object.class, java.lang.Double.class, java.lang.Boolean.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
+        ));
         jScrollPane1.setViewportView(jTableFuncionarios);
 
-        jButton1.setText("jButton1");
+        jButton1.setText("Buscar Funcionarios");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -243,8 +237,23 @@ public class Funcionarios extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        FuncionarioController funcionario = new FuncionarioController();
-        funcionario.buscarFuncionarios();
+        FuncionarioController funcionarioController = new FuncionarioController();
+        List<FuncionarioDTO> funcionarios = funcionarioController.buscarFuncionarios();
+        
+        DefaultTableModel modelo = (DefaultTableModel) jTableFuncionarios.getModel();
+                
+        for (FuncionarioDTO funcionario : funcionarios) {
+        Object[] linha = {
+            funcionario.getNome(), 
+            funcionario.getDataDeAdmissao(),
+            funcionario.getSalario(),
+            funcionario.getStatus() ? "Ativo" : "Inativo"
+        };
+        modelo.addRow(linha);
+        }
+        
+        jTableFuncionarios.setModel(modelo);
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
