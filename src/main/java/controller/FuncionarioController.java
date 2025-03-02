@@ -28,4 +28,8 @@ public class FuncionarioController {
         return service.buscarFuncionarios();
     }
     
+    public void excluirFuncionario(FuncionarioDTO dto){
+        service.excluirFuncionario(dto);
+    }
+    
 }

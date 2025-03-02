@@ -72,5 +72,24 @@ public class FuncionarioDAO {
         }
         return funcionarios;
     }
+
+    public void excluirFuncionario(FuncionarioDTO dto) {
+        String sql = "DELETE FROM funcionarios WHERE nome=? AND data_de_admissao=?";
+        
+        try {
+            stm = ConexaoBanco.abreConexao().prepareStatement(sql);
+            
+            stm.setString(1, dto.getNome());
+            stm.setDate(2, dto.getDataDeAdmissao());
+            
+            stm.execute();
+            stm.close();
+            
+            JOptionPane.showMessageDialog(null, "Funcionário " + dto.getNome() + " excluído");
+
+        } catch (Exception e) {          
+            JOptionPane.showMessageDialog(null, "Erro " + e);           
+        }
+    }
     
 }

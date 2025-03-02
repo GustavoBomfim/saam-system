@@ -52,7 +52,8 @@ public class Funcionarios extends javax.swing.JInternalFrame {
         jpnConsulta = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableFuncionarios = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        btnBuscarFuncionarios = new javax.swing.JButton();
+        btnExcluirFuncionarioSelecionado = new javax.swing.JButton();
 
         javax.swing.GroupLayout jpnBotoesLayout = new javax.swing.GroupLayout(jpnBotoes);
         jpnBotoes.setLayout(jpnBotoesLayout);
@@ -158,10 +159,17 @@ public class Funcionarios extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTableFuncionarios);
 
-        jButton1.setText("Buscar Funcionarios");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnBuscarFuncionarios.setText("Buscar Funcionarios");
+        btnBuscarFuncionarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnBuscarFuncionariosActionPerformed(evt);
+            }
+        });
+
+        btnExcluirFuncionarioSelecionado.setText("Excluir Funcionario Selecionado");
+        btnExcluirFuncionarioSelecionado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirFuncionarioSelecionadoActionPerformed(evt);
             }
         });
 
@@ -173,7 +181,9 @@ public class Funcionarios extends javax.swing.JInternalFrame {
                 .addGap(260, 260, 260)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(151, 151, 151)
-                .addComponent(jButton1)
+                .addGroup(jpnConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnBuscarFuncionarios)
+                    .addComponent(btnExcluirFuncionarioSelecionado))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jpnConsultaLayout.setVerticalGroup(
@@ -185,7 +195,9 @@ public class Funcionarios extends javax.swing.JInternalFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jpnConsultaLayout.createSequentialGroup()
                         .addGap(85, 85, 85)
-                        .addComponent(jButton1)))
+                        .addComponent(btnBuscarFuncionarios)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnExcluirFuncionarioSelecionado)))
                 .addContainerGap(67, Short.MAX_VALUE))
         );
 
@@ -235,12 +247,19 @@ public class Funcionarios extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnCadastrarFuncionarioMouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnBuscarFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarFuncionariosActionPerformed
         // TODO add your handling code here:
         FuncionarioController funcionarioController = new FuncionarioController();
         List<FuncionarioDTO> funcionarios = funcionarioController.buscarFuncionarios();
         
         DefaultTableModel modelo = (DefaultTableModel) jTableFuncionarios.getModel();
+        
+        if(modelo.getRowCount() > 0){
+            while(modelo.getRowCount() > 0){
+                modelo.removeRow(0);
+            }
+        }
+        
                 
         for (FuncionarioDTO funcionario : funcionarios) {
         Object[] linha = {
@@ -254,14 +273,42 @@ public class Funcionarios extends javax.swing.JInternalFrame {
         
         jTableFuncionarios.setModel(modelo);
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnBuscarFuncionariosActionPerformed
+
+    private void btnExcluirFuncionarioSelecionadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirFuncionarioSelecionadoActionPerformed
+        // TODO add your handling code here:
+        
+        int linhaSelecionada = jTableFuncionarios.getSelectedRow();
+        
+        if(linhaSelecionada != -1){
+            DefaultTableModel modelo = (DefaultTableModel) jTableFuncionarios.getModel();
+            
+            String nome = modelo.getValueAt(linhaSelecionada, 0).toString();
+            Date dataDeAdmissao = Date.valueOf(modelo.getValueAt(linhaSelecionada, 1).toString());
+            Double salario = Double.valueOf(modelo.getValueAt(linhaSelecionada, 2).toString());
+            boolean status = modelo.getValueAt(linhaSelecionada, 3).toString().equals("Ativo");
+            
+            FuncionarioController funcionarioController = new FuncionarioController();
+            FuncionarioDTO funcionario = new FuncionarioDTO(nome, dataDeAdmissao, salario, status);
+            funcionarioController.excluirFuncionario(funcionario);
+ 
+            modelo.removeRow(jTableFuncionarios.getSelectedRow());
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione um funcionário para excluí-lo");
+        }
+
+        
+        
+    }//GEN-LAST:event_btnExcluirFuncionarioSelecionadoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBuscarFuncionarios;
     private javax.swing.JButton btnCadastrarFuncionario;
+    private javax.swing.JButton btnExcluirFuncionarioSelecionado;
     private javax.swing.JLabel data;
     private javax.swing.JFormattedTextField dataInput;
-    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableFuncionarios;
     private javax.swing.JPanel jpnBotoes;
