@@ -19,4 +19,8 @@ public class UsuarioController {
         service.cadastrarUsuario(dto);
     }
     
+    public boolean logar(UsuarioDTO dto){
+        return service.logar(dto);
+    }
+    
 }

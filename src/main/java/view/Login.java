@@ -4,8 +4,10 @@
  */
 package view;
 
+import controller.FuncionarioController;
 import controller.UsuarioController;
 import java.util.Arrays;
+import model.dto.FuncionarioDTO;
 import model.dto.UsuarioDTO;
 
 /**
@@ -238,12 +240,19 @@ public class Login extends javax.swing.JFrame {
 
     private void entrarBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_entrarBtnMouseClicked
         // TODO add your handling code here:
+        
+        UsuarioDTO dto = new UsuarioDTO(null, emailInput.getText(),
+                Arrays.toString(senhaInput.getPassword()));
+        UsuarioController usuario = new UsuarioController();
+        
+        if(usuario.logar(dto)){
         Funcionarios tela = new Funcionarios();
         jDesktop.add(tela);
         tela.setVisible(true);
         
         jPanel1.setVisible(false);
         jPanel2.setVisible(false);
+        }
  
         //this.dispose();
         //tela.setVisible(true);

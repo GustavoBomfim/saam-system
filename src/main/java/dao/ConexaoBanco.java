@@ -20,7 +20,6 @@ public class ConexaoBanco {
             Class.forName(DRIVER_CLASS);
             //con = DriverManager.getConnection();
             con = DriverManager.getConnection(URL, USUARIO, SENHA);
-            JOptionPane.showMessageDialog(null, "Funcionou");
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro ao conectar com banco de dados " + e);

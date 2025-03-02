@@ -5,6 +5,7 @@
 package dao;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import model.dto.UsuarioDTO;
 
@@ -39,6 +40,23 @@ public class UsuarioDAO {
                 JOptionPane.showMessageDialog(null, "Erro " + e);
             }
 
+        }
+    }
+    
+    public boolean logar(UsuarioDTO dto){
+        String sql = "SELECT * FROM usuarios where email=? and senha=?";
+        try {
+            stm = ConexaoBanco.abreConexao().prepareStatement(sql);
+            
+            stm.setString(1, dto.getEmail());
+            stm.setString(2, dto.getSenha());
+            
+            ResultSet resultado = stm.executeQuery();
+            //stm.close();    
+            return resultado.next();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro " + e);
+            return false;
         }
     }
     
