@@ -11,6 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import model.dto.FuncionarioDTO;
 
 
@@ -26,6 +27,9 @@ public class Funcionarios extends javax.swing.JInternalFrame {
      */
     public Funcionarios() {
         initComponents();
+        
+        DefaultTableModel modelo = (DefaultTableModel) jTableFuncionarios.getModel();
+        jTableFuncionarios.setRowSorter(new TableRowSorter<>(modelo));
         
     }
 
