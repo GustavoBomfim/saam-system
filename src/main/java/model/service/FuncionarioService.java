@@ -26,4 +26,8 @@ public class FuncionarioService {
     public void excluirFuncionario(FuncionarioDTO dto) {
         dao.excluirFuncionario(dto);
     }
+
+    public List<FuncionarioDTO> buscarFuncionarioPorNome(String nome) {
+        return dao.buscarFuncionarioPorNome(nome);
+    }
 }

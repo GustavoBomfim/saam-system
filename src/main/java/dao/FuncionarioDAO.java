@@ -91,5 +91,36 @@ public class FuncionarioDAO {
             JOptionPane.showMessageDialog(null, "Erro " + e);           
         }
     }
+
+    public List<FuncionarioDTO> buscarFuncionarioPorNome(String nome) {
+        
+        String sql = "SELECT * FROM funcionarios WHERE UPPER(nome) LIKE UPPER(?)";
+        
+        List<FuncionarioDTO> funcionarios = new ArrayList<>();
+
+        
+        try {
+            stm = ConexaoBanco.abreConexao().prepareStatement(sql);
+            stm.setString(1,"%" + nome + "%");
+            stm.execute();
+            
+            ResultSet resultado = stm.executeQuery();
+            
+            while(resultado.next()){
+                FuncionarioDTO funcionario = new FuncionarioDTO(
+                        resultado.getString("nome"),
+                        resultado.getDate("data_de_admissao"),
+                        resultado.getDouble("salario"),
+                        resultado.getBoolean("status")
+                );
+                funcionarios.add(funcionario);
+            }
+            
+
+        } catch (Exception e) {          
+            JOptionPane.showMessageDialog(null, "Erro " + e);           
+        }
+        return funcionarios;
+    }
     
 }

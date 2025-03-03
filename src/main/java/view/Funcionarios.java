@@ -58,6 +58,9 @@ public class Funcionarios extends javax.swing.JInternalFrame {
         btnBuscarFuncionarios = new javax.swing.JButton();
         btnExcluirFuncionarioSelecionado = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        buscarPorNomeText = new javax.swing.JLabel();
+        filtrarNomeInput = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
 
         jpnFormulario.setBackground(new java.awt.Color(26, 35, 126));
 
@@ -176,24 +179,53 @@ public class Funcionarios extends javax.swing.JInternalFrame {
         jButton1.setText("Atualizar Funcionário Selecionado");
         jButton1.setToolTipText("");
 
+        buscarPorNomeText.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        buscarPorNomeText.setForeground(new java.awt.Color(255, 255, 255));
+        buscarPorNomeText.setText("Nome");
+        buscarPorNomeText.setToolTipText("");
+
+        filtrarNomeInput.setToolTipText("");
+
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/buscarFuncionarioIcon.jpg"))); // NOI18N
+        jButton2.setText("Buscar Funcionário pelo Nome");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jpnConsultaLayout = new javax.swing.GroupLayout(jpnConsulta);
         jpnConsulta.setLayout(jpnConsultaLayout);
         jpnConsultaLayout.setHorizontalGroup(
             jpnConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpnConsultaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 951, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jpnConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnExcluirFuncionarioSelecionado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnBuscarFuncionarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jpnConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpnConsultaLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 951, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(jpnConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnExcluirFuncionarioSelecionado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnBuscarFuncionarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jpnConsultaLayout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(buscarPorNomeText)
+                        .addGap(18, 18, 18)
+                        .addComponent(filtrarNomeInput, javax.swing.GroupLayout.PREFERRED_SIZE, 476, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(43, 43, 43)
+                        .addComponent(jButton2)))
                 .addContainerGap(154, Short.MAX_VALUE))
         );
         jpnConsultaLayout.setVerticalGroup(
             jpnConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpnConsultaLayout.createSequentialGroup()
-                .addGap(90, 90, 90)
+                .addGap(33, 33, 33)
+                .addGroup(jpnConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buscarPorNomeText)
+                    .addComponent(filtrarNomeInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2))
+                .addGap(33, 33, 33)
                 .addGroup(jpnConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE)
                     .addGroup(jpnConsultaLayout.createSequentialGroup()
@@ -300,14 +332,51 @@ public class Funcionarios extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_btnExcluirFuncionarioSelecionadoActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        
+        
+        if(!filtrarNomeInput.getText().isBlank()){
+            FuncionarioController funcionarioController = new FuncionarioController();
+            List<FuncionarioDTO> funcionarios = funcionarioController.buscarFuncionarioPorNome(filtrarNomeInput.getText());
+
+
+            DefaultTableModel modelo = (DefaultTableModel) jTableFuncionarios.getModel();
+
+            if(modelo.getRowCount() > 0){
+                while(modelo.getRowCount() > 0){
+                    modelo.removeRow(0);
+                }
+            }
+
+
+            for (FuncionarioDTO funcionario : funcionarios) {
+            Object[] linha = {
+                funcionario.getNome(), 
+                funcionario.getDataDeAdmissao(),
+                funcionario.getSalario(),
+                funcionario.getStatus() ? "Ativo" : "Inativo"
+            };
+            modelo.addRow(linha);
+            }
+
+            jTableFuncionarios.setModel(modelo);
+        } else {
+            JOptionPane.showMessageDialog(null, "Digite um nome para filtrar");
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscarFuncionarios;
     private javax.swing.JButton btnCadastrarFuncionario;
     private javax.swing.JButton btnExcluirFuncionarioSelecionado;
+    private javax.swing.JLabel buscarPorNomeText;
     private javax.swing.JLabel data;
     private javax.swing.JFormattedTextField dataInput;
+    private javax.swing.JTextField filtrarNomeInput;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableFuncionarios;
     private javax.swing.JPanel jpnConsulta;
