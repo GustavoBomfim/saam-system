@@ -59,16 +59,24 @@ public class Funcionarios extends javax.swing.JInternalFrame {
         btnExcluirFuncionarioSelecionado = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
 
-        jpnFormulario.setBackground(new java.awt.Color(255, 102, 51));
+        jpnFormulario.setBackground(new java.awt.Color(26, 35, 126));
 
+        nomeText.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        nomeText.setForeground(new java.awt.Color(255, 255, 255));
         nomeText.setText("Nome");
 
+        data.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        data.setForeground(new java.awt.Color(255, 255, 255));
         data.setText("Data de Admissão");
 
+        salarioText.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        salarioText.setForeground(new java.awt.Color(255, 255, 255));
         salarioText.setText("Salário");
 
         statusCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Verdadeiro", "Falso" }));
 
+        statusText.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        statusText.setForeground(new java.awt.Color(255, 255, 255));
         statusText.setText("Status");
 
         btnCadastrarFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cadastrarFuncionario.png"))); // NOI18N
@@ -86,65 +94,56 @@ public class Funcionarios extends javax.swing.JInternalFrame {
         jpnFormularioLayout.setHorizontalGroup(
             jpnFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpnFormularioLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addGap(55, 55, 55)
                 .addGroup(jpnFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnFormularioLayout.createSequentialGroup()
+                    .addGroup(jpnFormularioLayout.createSequentialGroup()
                         .addComponent(nomeText)
-                        .addGap(122, 122, 122))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnFormularioLayout.createSequentialGroup()
-                        .addComponent(nomeInput, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)))
-                .addGroup(jpnFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jpnFormularioLayout.createSequentialGroup()
-                        .addGap(13, 13, 13)
-                        .addComponent(dataInput))
-                    .addComponent(data))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(nomeInput))
+                .addGap(18, 18, 18)
                 .addGroup(jpnFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpnFormularioLayout.createSequentialGroup()
-                        .addGap(76, 76, 76)
-                        .addComponent(salarioText)
-                        .addGap(54, 54, 54))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnFormularioLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(salarioInput, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)))
+                    .addComponent(dataInput, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(data))
+                .addGap(25, 25, 25)
+                .addGroup(jpnFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(salarioInput, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(salarioText))
+                .addGap(18, 18, 18)
                 .addGroup(jpnFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(statusText)
-                    .addGroup(jpnFormularioLayout.createSequentialGroup()
-                        .addComponent(statusCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(67, 67, 67)
-                        .addComponent(btnCadastrarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(statusCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(btnCadastrarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(231, 231, 231))
         );
         jpnFormularioLayout.setVerticalGroup(
             jpnFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpnFormularioLayout.createSequentialGroup()
                 .addGroup(jpnFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpnFormularioLayout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addGroup(jpnFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(nomeText)
-                            .addComponent(data)
-                            .addComponent(salarioText)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnFormularioLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(statusText)))
-                .addGroup(jpnFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(63, 63, 63)
+                        .addComponent(nomeText)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(nomeInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jpnFormularioLayout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(btnCadastrarFuncionario))
-                    .addGroup(jpnFormularioLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                        .addGap(54, 54, 54)
                         .addGroup(jpnFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(dataInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(nomeInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jpnFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(salarioInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(statusCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(113, Short.MAX_VALUE))
+                            .addGroup(jpnFormularioLayout.createSequentialGroup()
+                                .addGap(9, 9, 9)
+                                .addGroup(jpnFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(data, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(salarioText)
+                                    .addComponent(statusText))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jpnFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(dataInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(salarioInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(statusCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnCadastrarFuncionario))))
+                .addContainerGap(143, Short.MAX_VALUE))
         );
 
-        jpnConsulta.setBackground(new java.awt.Color(0, 0, 0));
+        jpnConsulta.setBackground(new java.awt.Color(55, 71, 79));
 
         jTableFuncionarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -194,17 +193,17 @@ public class Funcionarios extends javax.swing.JInternalFrame {
         jpnConsultaLayout.setVerticalGroup(
             jpnConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpnConsultaLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 469, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(jpnConsultaLayout.createSequentialGroup()
                 .addGap(90, 90, 90)
-                .addComponent(btnBuscarFuncionarios)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnExcluirFuncionarioSelecionado)
-                .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jpnConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE)
+                    .addGroup(jpnConsultaLayout.createSequentialGroup()
+                        .addComponent(btnBuscarFuncionarios)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnExcluirFuncionarioSelecionado)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
