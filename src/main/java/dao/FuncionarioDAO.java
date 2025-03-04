@@ -123,5 +123,24 @@ public class FuncionarioDAO {
         }
         return funcionarios;
     }
+
+    public void atualizarFuncionario(FuncionarioDTO funcionario) {
+        String sql = "UPDATE funcionarios SET nome=?, salario=?  WHERE id=?";
+        
+        try {
+            stm = ConexaoBanco.abreConexao().prepareStatement(sql);
+            
+            stm.setString(1, funcionario.getNome());
+            stm.setDouble(2, funcionario.getSalario());
+            stm.setLong(3, funcionario.getId());
+           
+            stm.execute();
+            stm.close();
+            
+            JOptionPane.showMessageDialog(null, "Funcionário " + funcionario.getNome() + " atualizado");
+        } catch (Exception e) {          
+            JOptionPane.showMessageDialog(null, "Erro " + e);           
+        }
+    }
     
 }

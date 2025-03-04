@@ -14,6 +14,7 @@ view/Login$2.class
 controller/UsuarioController.class
 model/service/FuncionarioService.class
 view/Login.class
+view/Funcionarios$6.class
 model/util/Criptografar.class
 view/Funcionarios$1.class
 view/Login$3.class

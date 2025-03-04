@@ -30,4 +30,8 @@ public class FuncionarioService {
     public List<FuncionarioDTO> buscarFuncionarioPorNome(String nome) {
         return dao.buscarFuncionarioPorNome(nome);
     }
+
+    public void atualizarFuncionario(FuncionarioDTO funcionario) {
+        dao.atualizarFuncionario(funcionario);
+    }
 }

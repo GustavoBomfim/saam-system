@@ -35,5 +35,9 @@ public class FuncionarioController {
     public List<FuncionarioDTO> buscarFuncionarioPorNome(String nome){
         return service.buscarFuncionarioPorNome(nome);
     }
+
+    public void atualizarFuncionario(FuncionarioDTO funcionario) {
+        service.atualizarFuncionario(funcionario);
+    }
     
 }

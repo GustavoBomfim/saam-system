@@ -57,7 +57,7 @@ public class Funcionarios extends javax.swing.JInternalFrame {
         jTableFuncionarios = new javax.swing.JTable();
         btnBuscarFuncionarios = new javax.swing.JButton();
         btnExcluirFuncionarioSelecionado = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnAtualizarFuncionario = new javax.swing.JButton();
         buscarPorNomeText = new javax.swing.JLabel();
         filtrarNomeInput = new javax.swing.JTextField();
         btnBuscarFuncionarioPorNome = new javax.swing.JButton();
@@ -157,7 +157,7 @@ public class Funcionarios extends javax.swing.JInternalFrame {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, true, true, true, true
+                false, true, false, true, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -183,9 +183,14 @@ public class Funcionarios extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/atualizarFuncionarioSelecionado.png"))); // NOI18N
-        jButton1.setText("Atualizar Funcionário Selecionado");
-        jButton1.setToolTipText("");
+        btnAtualizarFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/atualizarFuncionarioSelecionado.png"))); // NOI18N
+        btnAtualizarFuncionario.setText("Atualizar Funcionário Selecionado");
+        btnAtualizarFuncionario.setToolTipText("");
+        btnAtualizarFuncionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtualizarFuncionarioActionPerformed(evt);
+            }
+        });
 
         buscarPorNomeText.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         buscarPorNomeText.setForeground(new java.awt.Color(255, 255, 255));
@@ -215,7 +220,7 @@ public class Funcionarios extends javax.swing.JInternalFrame {
                         .addGroup(jpnConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnExcluirFuncionarioSelecionado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnBuscarFuncionarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(btnAtualizarFuncionario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jpnConsultaLayout.createSequentialGroup()
                         .addGap(43, 43, 43)
                         .addComponent(buscarPorNomeText)
@@ -241,7 +246,7 @@ public class Funcionarios extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnExcluirFuncionarioSelecionado)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1)
+                        .addComponent(btnAtualizarFuncionario)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -377,8 +382,33 @@ public class Funcionarios extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnBuscarFuncionarioPorNomeActionPerformed
 
+    private void btnAtualizarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarFuncionarioActionPerformed
+        // TODO add your handling code here:
+        
+        int linhaSelecionada = jTableFuncionarios.getSelectedRow();
+
+        if (linhaSelecionada != -1) {
+            DefaultTableModel modelo = (DefaultTableModel) jTableFuncionarios.getModel();
+
+            Long id = Long.valueOf(modelo.getValueAt(linhaSelecionada, 0).toString());
+            String nome = modelo.getValueAt(linhaSelecionada, 1).toString();
+            Date dataDeAdmissao = Date.valueOf(modelo.getValueAt(linhaSelecionada, 2).toString());
+            Double salario = Double.valueOf(modelo.getValueAt(linhaSelecionada, 3).toString());
+            boolean status = modelo.getValueAt(linhaSelecionada, 4).toString().equals("Ativo");
+
+            FuncionarioDTO funcionario = new FuncionarioDTO(id, nome, dataDeAdmissao, salario, status);
+
+            FuncionarioController funcionarioController = new FuncionarioController();
+            funcionarioController.atualizarFuncionario(funcionario);
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione um funcionário para atualizar.");
+        }
+    }//GEN-LAST:event_btnAtualizarFuncionarioActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAtualizarFuncionario;
     private javax.swing.JButton btnBuscarFuncionarioPorNome;
     private javax.swing.JButton btnBuscarFuncionarios;
     private javax.swing.JButton btnCadastrarFuncionario;
@@ -387,7 +417,6 @@ public class Funcionarios extends javax.swing.JInternalFrame {
     private javax.swing.JLabel data;
     private javax.swing.JFormattedTextField dataInput;
     private javax.swing.JTextField filtrarNomeInput;
-    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableFuncionarios;
     private javax.swing.JPanel jpnConsulta;
