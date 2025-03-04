@@ -21,10 +21,6 @@ public class FuncionarioController {
     }
     
     public List<FuncionarioDTO> buscarFuncionarios(){
-        List<FuncionarioDTO> funcionarios = service.buscarFuncionarios();
-        for(FuncionarioDTO funcionario : funcionarios){
-            System.out.println(funcionario);
-        }
         return service.buscarFuncionarios();
     }
     
