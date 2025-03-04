@@ -17,7 +17,9 @@ import model.util.ValidadorEmail;
 
 public class UsuarioService {
     
-    UsuarioDAO dao = new UsuarioDAO();
+    private final UsuarioDAO dao = new UsuarioDAO();
+    
+    private final EmailService emailService = new EmailService();
     
     public void cadastrarUsuario(UsuarioDTO dto){
         if(validarCampos(dto, "cadastro") && ValidadorEmail.validarEmail(dto.getEmail())){
@@ -52,6 +54,18 @@ public class UsuarioService {
             return false;
         }
         return false;
+    }
+    
+
+    public void resetarSenhaPorEmail(String emailRemetente) {
+        String novaSenha = Criptografar.gerarSenhaAleatoria();
+        String novaSenhaCriptografada = Criptografar.criptografarSenha(novaSenha);  
+        
+        boolean funcionou = dao.atualizarSenhaFiltrandoPorEmail(novaSenhaCriptografada, emailRemetente);
+        
+        if(funcionou){
+            emailService.enviarEmail("A sua nova senha de acesso é: " + novaSenha, emailRemetente);
+        }
     }
     
 }

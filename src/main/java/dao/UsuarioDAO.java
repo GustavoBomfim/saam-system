@@ -60,4 +60,30 @@ public class UsuarioDAO {
         }
     }
     
+    
+    public boolean atualizarSenhaFiltrandoPorEmail(String novaSenhaCriptografada, String email){
+        String sql = "UPDATE usuarios SET senha=? WHERE email=?";
+        
+        try {
+            stm = ConexaoBanco.abreConexao().prepareStatement(sql);
+            
+            stm.setString(1, novaSenhaCriptografada);
+            stm.setString(2, email);
+            
+            int linhasAfetadas = stm.executeUpdate();
+
+            if (linhasAfetadas > 0) {
+                JOptionPane.showMessageDialog(null, "Senha redefinida com sucesso!");
+                return true;
+            } 
+            JOptionPane.showMessageDialog(null, "E-mail não encontrado.");
+            return false;
+            
+
+        } catch (Exception e) {          
+            JOptionPane.showMessageDialog(null, "Erro " + e);    
+            return false;
+        }
+    }
+    
 }

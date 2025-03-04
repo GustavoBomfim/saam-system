@@ -5,6 +5,7 @@
 /home/gustavo/NetBeansProjects/SaamSystem/src/main/java/dao/UsuarioDAO.java
 /home/gustavo/NetBeansProjects/SaamSystem/src/main/java/model/dto/FuncionarioDTO.java
 /home/gustavo/NetBeansProjects/SaamSystem/src/main/java/model/dto/UsuarioDTO.java
+/home/gustavo/NetBeansProjects/SaamSystem/src/main/java/model/service/EmailService.java
 /home/gustavo/NetBeansProjects/SaamSystem/src/main/java/model/service/FuncionarioService.java
 /home/gustavo/NetBeansProjects/SaamSystem/src/main/java/model/service/UsuarioService.java
 /home/gustavo/NetBeansProjects/SaamSystem/src/main/java/model/util/Criptografar.java

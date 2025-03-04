@@ -1,11 +1,14 @@
 model/util/ValidadorEmail.class
+model/service/EmailService$1.class
 dao/ConexaoBanco.class
 dao/UsuarioDAO.class
+view/Login$4.class
 view/Funcionarios$3.class
 view/Funcionarios.class
 dao/FuncionarioDAO.class
 controller/FuncionarioController.class
 model/dto/UsuarioDTO.class
+model/service/EmailService.class
 view/Login$2.class
 controller/UsuarioController.class
 model/service/FuncionarioService.class

@@ -6,6 +6,7 @@ package model.util;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import javax.swing.JOptionPane;
 
 /**
@@ -31,6 +32,19 @@ public class Criptografar {
         }
         return null;
     }
+    
+    
+    public static String gerarSenhaAleatoria() {
+        String caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        SecureRandom random = new SecureRandom();
+        StringBuilder senha = new StringBuilder();
 
+        for (int i = 0; i < 8; i++) {
+            int index = random.nextInt(caracteres.length());
+            senha.append(caracteres.charAt(index));
+        }
+
+        return senha.toString().trim();
+    }
     
 }

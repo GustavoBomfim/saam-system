@@ -4,10 +4,8 @@
  */
 package view;
 
-import controller.FuncionarioController;
 import controller.UsuarioController;
-import java.util.Arrays;
-import model.dto.FuncionarioDTO;
+import javax.swing.JOptionPane;
 import model.dto.UsuarioDTO;
 
 /**
@@ -40,6 +38,7 @@ public class Login extends javax.swing.JFrame {
         senhaText = new javax.swing.JLabel();
         entrarBtn = new javax.swing.JButton();
         senhaInput = new javax.swing.JPasswordField();
+        btnEsqueceuSenha = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         novoPorAqui = new javax.swing.JLabel();
         emailCadastroInput = new javax.swing.JTextField();
@@ -81,6 +80,13 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        btnEsqueceuSenha.setText("Esqueceu sua senha?");
+        btnEsqueceuSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEsqueceuSenhaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -93,18 +99,19 @@ public class Login extends javax.swing.JFrame {
                             .addComponent(senhaText)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(entrarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(senhaInput, javax.swing.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE)
-                                        .addComponent(emailInput)))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(btnEsqueceuSenha)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(entrarBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(senhaInput, javax.swing.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE)
+                                    .addComponent(emailInput))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 379, Short.MAX_VALUE)))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(emailText)
-                        .addGap(281, 678, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(bemVindo)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(emailText)
+                            .addComponent(bemVindo))
+                        .addGap(281, 532, Short.MAX_VALUE))))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(logoSaam, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -124,7 +131,9 @@ public class Login extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(senhaInput, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(entrarBtn)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(entrarBtn)
+                    .addComponent(btnEsqueceuSenha))
                 .addContainerGap(405, Short.MAX_VALUE))
         );
 
@@ -242,7 +251,7 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         UsuarioDTO dto = new UsuarioDTO(null, emailInput.getText(),
-                Arrays.toString(senhaInput.getPassword()));
+               String.valueOf(senhaInput.getPassword()));
         UsuarioController usuario = new UsuarioController();
         
         if(usuario.logar(dto)){
@@ -263,8 +272,18 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
         UsuarioController controller = new UsuarioController();
         controller.cadastrarUsuario(new UsuarioDTO(nomeCadastroInput.getText(), 
-             emailCadastroInput.getText(), Arrays.toString(senhaCadastroInput.getPassword())));
+             emailCadastroInput.getText(), String.valueOf(senhaCadastroInput.getPassword())));
     }//GEN-LAST:event_cadastreBtnMouseClicked
+
+    private void btnEsqueceuSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEsqueceuSenhaActionPerformed
+        // TODO add your handling code here:
+        if(emailInput.getText().isBlank()){
+            JOptionPane.showMessageDialog(null, "Preencha seu email na tela de login que enviaremos a senha cadastrada para ele.");
+        } else {
+            UsuarioController controller = new UsuarioController();
+            controller.resetarSenhaPorEmail(emailInput.getText());
+        }
+    }//GEN-LAST:event_btnEsqueceuSenhaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -303,6 +322,7 @@ public class Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bemVindo;
+    private javax.swing.JButton btnEsqueceuSenha;
     private javax.swing.JButton cadastreBtn;
     private javax.swing.JTextField emailCadastroInput;
     private javax.swing.JTextField emailInput;

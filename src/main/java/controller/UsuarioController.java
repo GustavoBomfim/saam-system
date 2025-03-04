@@ -23,4 +23,7 @@ public class UsuarioController {
         return service.logar(dto);
     }
     
+    public void resetarSenhaPorEmail(String emailRemetente){
+        service.resetarSenhaPorEmail(emailRemetente);
+    }
 }
