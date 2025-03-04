@@ -1,6 +1,7 @@
 model/util/ValidadorEmail.class
 model/service/EmailService$1.class
 dao/ConexaoBanco.class
+view/Funcionarios$5.class
 dao/UsuarioDAO.class
 view/Login$4.class
 view/Funcionarios$3.class

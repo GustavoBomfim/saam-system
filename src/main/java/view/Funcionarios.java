@@ -60,7 +60,7 @@ public class Funcionarios extends javax.swing.JInternalFrame {
         jButton1 = new javax.swing.JButton();
         buscarPorNomeText = new javax.swing.JLabel();
         filtrarNomeInput = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        btnBuscarFuncionarioPorNome = new javax.swing.JButton();
 
         jpnFormulario.setBackground(new java.awt.Color(26, 35, 126));
 
@@ -153,9 +153,17 @@ public class Funcionarios extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Nome", "Data Admissão", "Salário", "Status"
+                "Id", "Nome", "Data Admissão", "Salário", "Status"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, true, true, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTableFuncionarios);
 
         btnBuscarFuncionarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/buscarTodosFuncionariosIcon.png"))); // NOI18N
@@ -186,11 +194,11 @@ public class Funcionarios extends javax.swing.JInternalFrame {
 
         filtrarNomeInput.setToolTipText("");
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/buscarFuncionarioIcon.jpg"))); // NOI18N
-        jButton2.setText("Buscar Funcionário pelo Nome");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnBuscarFuncionarioPorNome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/buscarFuncionarioIcon.jpg"))); // NOI18N
+        btnBuscarFuncionarioPorNome.setText("Buscar Funcionário pelo Nome");
+        btnBuscarFuncionarioPorNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnBuscarFuncionarioPorNomeActionPerformed(evt);
             }
         });
 
@@ -214,7 +222,7 @@ public class Funcionarios extends javax.swing.JInternalFrame {
                         .addGap(18, 18, 18)
                         .addComponent(filtrarNomeInput, javax.swing.GroupLayout.PREFERRED_SIZE, 476, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(43, 43, 43)
-                        .addComponent(jButton2)))
+                        .addComponent(btnBuscarFuncionarioPorNome)))
                 .addContainerGap(154, Short.MAX_VALUE))
         );
         jpnConsultaLayout.setVerticalGroup(
@@ -224,7 +232,7 @@ public class Funcionarios extends javax.swing.JInternalFrame {
                 .addGroup(jpnConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buscarPorNomeText)
                     .addComponent(filtrarNomeInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2))
+                    .addComponent(btnBuscarFuncionarioPorNome))
                 .addGap(33, 33, 33)
                 .addGroup(jpnConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE)
@@ -259,21 +267,26 @@ public class Funcionarios extends javax.swing.JInternalFrame {
 
     private void btnCadastrarFuncionarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCadastrarFuncionarioMouseClicked
         // TODO add your handling code here:
-        
-        try {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        java.util.Date parsedDate = sdf.parse(dataInput.getText());
+        if(nomeInput.getText().isBlank() || dataInput.getText().isBlank() || 
+                salarioInput.getText().isBlank()){
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos de cadastro.");
+        } else {
+            try {
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            java.util.Date parsedDate = sdf.parse(dataInput.getText());
 
-        Date sqlDate = new Date(parsedDate.getTime());
-            
-        FuncionarioDTO dto = new FuncionarioDTO(nomeInput.getText(), 
-                sqlDate, Double.valueOf(salarioInput.getText()), 
-                statusCombo.getSelectedItem() == "Verdadeiro");
-        
-        FuncionarioController funcionarioController = new FuncionarioController();
-        funcionarioController.cadastrarFuncionario(dto);
-        } catch (ParseException e) {
-            JOptionPane.showMessageDialog(null, "Formato de data inválido! Use dd/MM/yyyy.");
+            Date sqlDate = new Date(parsedDate.getTime());
+
+            FuncionarioDTO dto = new FuncionarioDTO(null, nomeInput.getText(), 
+                    sqlDate, Double.valueOf(salarioInput.getText()), 
+                    statusCombo.getSelectedItem() == "Verdadeiro");
+
+            FuncionarioController funcionarioController = new FuncionarioController();
+            funcionarioController.cadastrarFuncionario(dto);
+            btnBuscarFuncionariosActionPerformed(null);
+            } catch (ParseException e) {
+                JOptionPane.showMessageDialog(null, "Formato de data inválido! Use dd/MM/yyyy.");
+            }
         }
     }//GEN-LAST:event_btnCadastrarFuncionarioMouseClicked
 
@@ -293,6 +306,7 @@ public class Funcionarios extends javax.swing.JInternalFrame {
                 
         for (FuncionarioDTO funcionario : funcionarios) {
         Object[] linha = {
+            funcionario.getId(),
             funcionario.getNome(), 
             funcionario.getDataDeAdmissao(),
             funcionario.getSalario(),
@@ -313,14 +327,10 @@ public class Funcionarios extends javax.swing.JInternalFrame {
         if(linhaSelecionada != -1){
             DefaultTableModel modelo = (DefaultTableModel) jTableFuncionarios.getModel();
             
-            String nome = modelo.getValueAt(linhaSelecionada, 0).toString();
-            Date dataDeAdmissao = Date.valueOf(modelo.getValueAt(linhaSelecionada, 1).toString());
-            Double salario = Double.valueOf(modelo.getValueAt(linhaSelecionada, 2).toString());
-            boolean status = modelo.getValueAt(linhaSelecionada, 3).toString().equals("Ativo");
+            Long id = Long.valueOf(modelo.getValueAt(linhaSelecionada, 0).toString());
             
             FuncionarioController funcionarioController = new FuncionarioController();
-            FuncionarioDTO funcionario = new FuncionarioDTO(nome, dataDeAdmissao, salario, status);
-            funcionarioController.excluirFuncionario(funcionario);
+            funcionarioController.excluirFuncionario(id);
  
             modelo.removeRow(jTableFuncionarios.getSelectedRow());
 
@@ -332,7 +342,7 @@ public class Funcionarios extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_btnExcluirFuncionarioSelecionadoActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnBuscarFuncionarioPorNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarFuncionarioPorNomeActionPerformed
         // TODO add your handling code here:
         
         
@@ -352,6 +362,7 @@ public class Funcionarios extends javax.swing.JInternalFrame {
 
             for (FuncionarioDTO funcionario : funcionarios) {
             Object[] linha = {
+                funcionario.getId(),
                 funcionario.getNome(), 
                 funcionario.getDataDeAdmissao(),
                 funcionario.getSalario(),
@@ -364,10 +375,11 @@ public class Funcionarios extends javax.swing.JInternalFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Digite um nome para filtrar");
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnBuscarFuncionarioPorNomeActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBuscarFuncionarioPorNome;
     private javax.swing.JButton btnBuscarFuncionarios;
     private javax.swing.JButton btnCadastrarFuncionario;
     private javax.swing.JButton btnExcluirFuncionarioSelecionado;
@@ -376,7 +388,6 @@ public class Funcionarios extends javax.swing.JInternalFrame {
     private javax.swing.JFormattedTextField dataInput;
     private javax.swing.JTextField filtrarNomeInput;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableFuncionarios;
     private javax.swing.JPanel jpnConsulta;

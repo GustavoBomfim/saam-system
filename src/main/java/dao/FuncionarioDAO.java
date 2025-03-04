@@ -58,6 +58,7 @@ public class FuncionarioDAO {
             
             while(resultado.next()){
                 FuncionarioDTO funcionario = new FuncionarioDTO(
+                        resultado.getLong("id"),
                         resultado.getString("nome"),
                         resultado.getDate("data_de_admissao"),
                         resultado.getDouble("salario"),
@@ -73,19 +74,18 @@ public class FuncionarioDAO {
         return funcionarios;
     }
 
-    public void excluirFuncionario(FuncionarioDTO dto) {
-        String sql = "DELETE FROM funcionarios WHERE nome=? AND data_de_admissao=?";
+    public void excluirFuncionario(Long id) {
+        String sql = "DELETE FROM funcionarios WHERE id=?";
         
         try {
             stm = ConexaoBanco.abreConexao().prepareStatement(sql);
             
-            stm.setString(1, dto.getNome());
-            stm.setDate(2, dto.getDataDeAdmissao());
-            
+            stm.setLong(1, id);
+           
             stm.execute();
             stm.close();
             
-            JOptionPane.showMessageDialog(null, "Funcionário " + dto.getNome() + " excluído");
+            JOptionPane.showMessageDialog(null, "Funcionário excluído");
 
         } catch (Exception e) {          
             JOptionPane.showMessageDialog(null, "Erro " + e);           
@@ -108,6 +108,7 @@ public class FuncionarioDAO {
             
             while(resultado.next()){
                 FuncionarioDTO funcionario = new FuncionarioDTO(
+                        resultado.getLong("id"),
                         resultado.getString("nome"),
                         resultado.getDate("data_de_admissao"),
                         resultado.getDouble("salario"),

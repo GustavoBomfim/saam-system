@@ -12,14 +12,15 @@ import java.sql.Date;
  * @author gustavo
  */
 public class FuncionarioDTO {
-
+    private Long id;
     private String nome;
     private Date dataDeAdmissao;
     private Double salario;
     private boolean status;
     
     
-    public FuncionarioDTO(String nome, Date dataDeAdmissao, Double salario, boolean status){
+    public FuncionarioDTO(Long id, String nome, Date dataDeAdmissao, Double salario, boolean status){
+        this.id = id;
         this.nome = nome;
         this.dataDeAdmissao = dataDeAdmissao;
         this.salario = salario;
@@ -40,6 +41,10 @@ public class FuncionarioDTO {
     
     public boolean getStatus(){
         return this.status;
+    }
+    
+    public long getId(){
+        return this.id;
     }
     
     @Override

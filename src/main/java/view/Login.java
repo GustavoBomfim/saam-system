@@ -80,6 +80,9 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        btnEsqueceuSenha.setBackground(new java.awt.Color(153, 153, 153));
+        btnEsqueceuSenha.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        btnEsqueceuSenha.setForeground(new java.awt.Color(255, 255, 255));
         btnEsqueceuSenha.setText("Esqueceu sua senha?");
         btnEsqueceuSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
