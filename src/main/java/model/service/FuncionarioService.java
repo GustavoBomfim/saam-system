@@ -34,4 +34,7 @@ public class FuncionarioService {
     public void atualizarFuncionario(FuncionarioDTO funcionario) {
         dao.atualizarFuncionario(funcionario);
     }
+    public void desativarFuncionario(Long id) {
+        dao.desativarFuncionario(id);
+    }
 }

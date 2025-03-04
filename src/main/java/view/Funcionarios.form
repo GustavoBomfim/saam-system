@@ -210,6 +210,7 @@
                               <Component id="btnExcluirFuncionarioSelecionado" max="32767" attributes="0"/>
                               <Component id="btnBuscarFuncionarios" max="32767" attributes="0"/>
                               <Component id="btnAtualizarFuncionario" max="32767" attributes="0"/>
+                              <Component id="btnDesativarFuncionario" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -243,6 +244,8 @@
                           <Component id="btnExcluirFuncionarioSelecionado" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="btnAtualizarFuncionario" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="btnDesativarFuncionario" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -279,8 +282,8 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/images/buscarTodosFuncionariosIcon.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Buscar Todos Funcionarios"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
+            <Property name="label" type="java.lang.String" value="Buscar Todos Funcion&#xe1;rios"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBuscarFuncionariosActionPerformed"/>
@@ -291,7 +294,8 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/images/apagarFuncionarioSelecionadoIcon.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Excluir Funcionario Selecionado"/>
+            <Property name="text" type="java.lang.String" value="Excluir Funcion&#xe1;rio Selecionado"/>
+            <Property name="actionCommand" type="java.lang.String" value="Excluir Funcion&#xe1;rio Selecionado"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnExcluirFuncionarioSelecionadoActionPerformed"/>
@@ -335,6 +339,17 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBuscarFuncionarioPorNomeActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnDesativarFuncionario">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/images/desativarFuncionario.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Desativar Funcion&#xe1;rio Selecionado"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDesativarFuncionarioActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

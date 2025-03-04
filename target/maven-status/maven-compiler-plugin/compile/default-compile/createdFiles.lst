@@ -22,4 +22,5 @@ model/dto/FuncionarioDTO.class
 view/Funcionarios$4.class
 view/Login$1.class
 model/service/UsuarioService.class
+view/Funcionarios$7.class
 view/Funcionarios$2.class

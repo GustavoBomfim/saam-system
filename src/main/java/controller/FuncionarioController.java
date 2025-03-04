@@ -40,4 +40,8 @@ public class FuncionarioController {
         service.atualizarFuncionario(funcionario);
     }
     
+    public void desativarFuncionario(Long id) {
+        service.desativarFuncionario(id);
+    }
+    
 }

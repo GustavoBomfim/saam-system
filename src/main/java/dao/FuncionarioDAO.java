@@ -137,7 +137,24 @@ public class FuncionarioDAO {
             stm.execute();
             stm.close();
             
-            JOptionPane.showMessageDialog(null, "Funcionário " + funcionario.getNome() + " atualizado");
+            JOptionPane.showMessageDialog(null, "Funcionário " + funcionario.getNome() + " foi atualizado");
+        } catch (Exception e) {          
+            JOptionPane.showMessageDialog(null, "Erro " + e);           
+        }
+    }
+    
+    public void desativarFuncionario(Long id) {
+        String sql = "UPDATE funcionarios SET status=false  WHERE id=?";
+        
+        try {
+            stm = ConexaoBanco.abreConexao().prepareStatement(sql);
+            
+            stm.setLong(1, id);
+           
+            stm.execute();
+            stm.close();
+            
+            JOptionPane.showMessageDialog(null, "Funcionário foi desativado");
         } catch (Exception e) {          
             JOptionPane.showMessageDialog(null, "Erro " + e);           
         }

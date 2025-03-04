@@ -61,6 +61,7 @@ public class Funcionarios extends javax.swing.JInternalFrame {
         buscarPorNomeText = new javax.swing.JLabel();
         filtrarNomeInput = new javax.swing.JTextField();
         btnBuscarFuncionarioPorNome = new javax.swing.JButton();
+        btnDesativarFuncionario = new javax.swing.JButton();
 
         jpnFormulario.setBackground(new java.awt.Color(26, 35, 126));
 
@@ -167,8 +168,8 @@ public class Funcionarios extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(jTableFuncionarios);
 
         btnBuscarFuncionarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/buscarTodosFuncionariosIcon.png"))); // NOI18N
-        btnBuscarFuncionarios.setText("Buscar Todos Funcionarios");
         btnBuscarFuncionarios.setToolTipText("");
+        btnBuscarFuncionarios.setLabel("Buscar Todos Funcionários");
         btnBuscarFuncionarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarFuncionariosActionPerformed(evt);
@@ -176,7 +177,8 @@ public class Funcionarios extends javax.swing.JInternalFrame {
         });
 
         btnExcluirFuncionarioSelecionado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/apagarFuncionarioSelecionadoIcon.png"))); // NOI18N
-        btnExcluirFuncionarioSelecionado.setText("Excluir Funcionario Selecionado");
+        btnExcluirFuncionarioSelecionado.setText("Excluir Funcionário Selecionado");
+        btnExcluirFuncionarioSelecionado.setActionCommand("Excluir Funcionário Selecionado");
         btnExcluirFuncionarioSelecionado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExcluirFuncionarioSelecionadoActionPerformed(evt);
@@ -207,6 +209,14 @@ public class Funcionarios extends javax.swing.JInternalFrame {
             }
         });
 
+        btnDesativarFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/desativarFuncionario.png"))); // NOI18N
+        btnDesativarFuncionario.setText("Desativar Funcionário Selecionado");
+        btnDesativarFuncionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDesativarFuncionarioActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jpnConsultaLayout = new javax.swing.GroupLayout(jpnConsulta);
         jpnConsulta.setLayout(jpnConsultaLayout);
         jpnConsultaLayout.setHorizontalGroup(
@@ -220,7 +230,8 @@ public class Funcionarios extends javax.swing.JInternalFrame {
                         .addGroup(jpnConsultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnExcluirFuncionarioSelecionado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnBuscarFuncionarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnAtualizarFuncionario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(btnAtualizarFuncionario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnDesativarFuncionario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jpnConsultaLayout.createSequentialGroup()
                         .addGap(43, 43, 43)
                         .addComponent(buscarPorNomeText)
@@ -247,6 +258,8 @@ public class Funcionarios extends javax.swing.JInternalFrame {
                         .addComponent(btnExcluirFuncionarioSelecionado)
                         .addGap(18, 18, 18)
                         .addComponent(btnAtualizarFuncionario)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnDesativarFuncionario)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -406,12 +419,32 @@ public class Funcionarios extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnAtualizarFuncionarioActionPerformed
 
+    private void btnDesativarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDesativarFuncionarioActionPerformed
+        // TODO add your handling code here:
+                int linhaSelecionada = jTableFuncionarios.getSelectedRow();
+
+        if (linhaSelecionada != -1) {
+            DefaultTableModel modelo = (DefaultTableModel) jTableFuncionarios.getModel();
+
+            Long id = Long.valueOf(modelo.getValueAt(linhaSelecionada, 0).toString());
+           
+
+            FuncionarioController funcionarioController = new FuncionarioController();
+            funcionarioController.desativarFuncionario(id);
+
+            btnBuscarFuncionariosActionPerformed(null);
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione um funcionário para desativar.");
+        }
+    }//GEN-LAST:event_btnDesativarFuncionarioActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAtualizarFuncionario;
     private javax.swing.JButton btnBuscarFuncionarioPorNome;
     private javax.swing.JButton btnBuscarFuncionarios;
     private javax.swing.JButton btnCadastrarFuncionario;
+    private javax.swing.JButton btnDesativarFuncionario;
     private javax.swing.JButton btnExcluirFuncionarioSelecionado;
     private javax.swing.JLabel buscarPorNomeText;
     private javax.swing.JLabel data;
