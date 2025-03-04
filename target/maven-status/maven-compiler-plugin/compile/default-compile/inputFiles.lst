@@ -1,8 +1,8 @@
 /home/gustavo/NetBeansProjects/SaamSystem/src/main/java/controller/FuncionarioController.java
 /home/gustavo/NetBeansProjects/SaamSystem/src/main/java/controller/UsuarioController.java
-/home/gustavo/NetBeansProjects/SaamSystem/src/main/java/dao/ConexaoBanco.java
-/home/gustavo/NetBeansProjects/SaamSystem/src/main/java/dao/FuncionarioDAO.java
-/home/gustavo/NetBeansProjects/SaamSystem/src/main/java/dao/UsuarioDAO.java
+/home/gustavo/NetBeansProjects/SaamSystem/src/main/java/model/dao/ConexaoBanco.java
+/home/gustavo/NetBeansProjects/SaamSystem/src/main/java/model/dao/FuncionarioDAO.java
+/home/gustavo/NetBeansProjects/SaamSystem/src/main/java/model/dao/UsuarioDAO.java
 /home/gustavo/NetBeansProjects/SaamSystem/src/main/java/model/dto/FuncionarioDTO.java
 /home/gustavo/NetBeansProjects/SaamSystem/src/main/java/model/dto/UsuarioDTO.java
 /home/gustavo/NetBeansProjects/SaamSystem/src/main/java/model/service/EmailService.java

@@ -4,7 +4,7 @@
  */
 package model.service;
 
-import dao.UsuarioDAO;
+import model.dao.UsuarioDAO;
 import javax.swing.JOptionPane;
 import model.dto.UsuarioDTO;
 import model.util.Criptografar;

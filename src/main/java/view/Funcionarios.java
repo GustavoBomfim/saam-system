@@ -295,6 +295,10 @@ public class Funcionarios extends javax.swing.JInternalFrame {
         if(nomeInput.getText().isBlank() || dataInput.getText().isBlank() || 
                 salarioInput.getText().isBlank()){
             JOptionPane.showMessageDialog(null, "Preencha todos os campos de cadastro.");
+        } else if(nomeInput.getText().length() > 60) {
+            JOptionPane.showMessageDialog(null, "Digite um nome menor que 60 caracteres.");
+        } else if (!salarioInput.getText().matches("^\\d{1,9}$")) {
+            JOptionPane.showMessageDialog(null, "Salário inválido! Digite até 9 dígitos e apenas números.");
         } else {
             try {
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -371,7 +375,7 @@ public class Funcionarios extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         
         
-        if(!filtrarNomeInput.getText().isBlank()){
+        if(!filtrarNomeInput.getText().isBlank() && filtrarNomeInput.getText().length() <= 60){
             FuncionarioController funcionarioController = new FuncionarioController();
             List<FuncionarioDTO> funcionarios = funcionarioController.buscarFuncionarioPorNome(filtrarNomeInput.getText());
 
@@ -398,7 +402,7 @@ public class Funcionarios extends javax.swing.JInternalFrame {
 
             jTableFuncionarios.setModel(modelo);
         } else {
-            JOptionPane.showMessageDialog(null, "Digite um nome para filtrar");
+            JOptionPane.showMessageDialog(null, "Digite um nome, menor que 60 caracteres, para filtrar");
         }
     }//GEN-LAST:event_btnBuscarFuncionarioPorNomeActionPerformed
 

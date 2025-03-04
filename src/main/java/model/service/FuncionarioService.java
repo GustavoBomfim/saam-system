@@ -4,7 +4,7 @@
  */
 package model.service;
 
-import dao.FuncionarioDAO;
+import model.dao.FuncionarioDAO;
 import java.util.List;
 import model.dto.FuncionarioDTO;
 

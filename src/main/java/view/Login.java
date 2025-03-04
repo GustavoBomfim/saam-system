@@ -253,17 +253,23 @@ public class Login extends javax.swing.JFrame {
     private void entrarBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_entrarBtnMouseClicked
         // TODO add your handling code here:
         
-        UsuarioDTO dto = new UsuarioDTO(null, emailInput.getText(),
-               String.valueOf(senhaInput.getPassword()));
-        UsuarioController usuario = new UsuarioController();
-        
-        if(usuario.logar(dto)){
-        Funcionarios tela = new Funcionarios();
-        jDesktop.add(tela);
-        tela.setVisible(true);
-        
-        jPanel1.setVisible(false);
-        jPanel2.setVisible(false);
+        if(emailInput.getText().length() > 60){
+            JOptionPane.showMessageDialog(null, "Digite um email menor que 60 caracteres");
+        } else if(String.valueOf(senhaInput.getPassword()).length() > 64){
+            JOptionPane.showMessageDialog(null, "Digite uma senha menor que 64 caracteres");
+        } else {
+            UsuarioDTO dto = new UsuarioDTO(null, emailInput.getText(),
+                   String.valueOf(senhaInput.getPassword()));
+            UsuarioController usuario = new UsuarioController();
+
+            if(usuario.logar(dto)){
+                Funcionarios tela = new Funcionarios();
+                jDesktop.add(tela);
+                tela.setVisible(true);
+
+                jPanel1.setVisible(false);
+                jPanel2.setVisible(false);
+            }
         }
  
         //this.dispose();
@@ -273,15 +279,25 @@ public class Login extends javax.swing.JFrame {
 
     private void cadastreBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cadastreBtnMouseClicked
         // TODO add your handling code here:
-        UsuarioController controller = new UsuarioController();
-        controller.cadastrarUsuario(new UsuarioDTO(nomeCadastroInput.getText(), 
-             emailCadastroInput.getText(), String.valueOf(senhaCadastroInput.getPassword())));
+        if(nomeCadastroInput.getText().length() > 60){
+            JOptionPane.showMessageDialog(null, "Cadastre um nome menor que 60 caracteres");
+        } else if(emailCadastroInput.getText().length() > 60){
+            JOptionPane.showMessageDialog(null, "Cadastre um email menor que 60 caracteres");
+        } else if(String.valueOf(senhaCadastroInput.getPassword()).length() > 64){
+            JOptionPane.showMessageDialog(null, "Cadastre uma senha menor que 64 caracteres");
+        } else {
+            UsuarioController controller = new UsuarioController();
+            controller.cadastrarUsuario(new UsuarioDTO(nomeCadastroInput.getText(), 
+                 emailCadastroInput.getText(), String.valueOf(senhaCadastroInput.getPassword())));
+        }
     }//GEN-LAST:event_cadastreBtnMouseClicked
 
     private void btnEsqueceuSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEsqueceuSenhaActionPerformed
         // TODO add your handling code here:
         if(emailInput.getText().isBlank()){
             JOptionPane.showMessageDialog(null, "Preencha seu email na tela de login que enviaremos a senha cadastrada para ele.");
+        } else if(emailInput.getText().length() > 60){
+            JOptionPane.showMessageDialog(null, "Digite um email menor que 60 caracteres");
         } else {
             UsuarioController controller = new UsuarioController();
             controller.resetarSenhaPorEmail(emailInput.getText());
