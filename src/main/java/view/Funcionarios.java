@@ -77,7 +77,7 @@ public class Funcionarios extends javax.swing.JInternalFrame {
         salarioText.setForeground(new java.awt.Color(255, 255, 255));
         salarioText.setText("Salário");
 
-        statusCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Verdadeiro", "Falso" }));
+        statusCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ativo", "Inativo" }));
 
         statusText.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         statusText.setForeground(new java.awt.Color(255, 255, 255));
@@ -297,7 +297,7 @@ public class Funcionarios extends javax.swing.JInternalFrame {
 
             FuncionarioDTO dto = new FuncionarioDTO(null, nomeInput.getText(), 
                     sqlDate, Double.valueOf(salarioInput.getText()), 
-                    statusCombo.getSelectedItem() == "Verdadeiro");
+                    statusCombo.getSelectedItem() == "Ativo");
 
             FuncionarioController funcionarioController = new FuncionarioController();
             funcionarioController.cadastrarFuncionario(dto);
