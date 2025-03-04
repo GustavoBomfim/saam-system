@@ -4,6 +4,10 @@ O **SAAM System** é uma aplicação desenvolvida para monitorar e gerenciar os 
 Oferece funcionalidades como cadastro de usuários, login, gerenciamento de funcionários e recuperação de senha, garantindo segurança e eficiência na gestão de recursos humanos.
 
 ---
+## 📸 Vídeo explicando o projeto
+- https://www.youtube.com/watch?v=eRoF6VEVjZ4
+
+---
 
 ## ✨ Funcionalidades
 
